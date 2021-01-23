@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
-import 'package:wastewatcher/components/dishCard.dart';
+import 'package:wastewatcher/components/dishDialog.dart';
 import 'package:wastewatcher/constants/colors.dart';
 import 'package:wastewatcher/models/dish.dart';
 import 'package:wastewatcher/shared/dishesFutureProvider.dart';
@@ -25,7 +25,7 @@ class DishListScreen extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (context) {
-        return DishCard(
+        return DishDialog(
           dish: selectedDish,
         );
       },
