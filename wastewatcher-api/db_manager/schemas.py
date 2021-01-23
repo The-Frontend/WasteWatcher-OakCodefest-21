@@ -11,6 +11,7 @@ dishes = sqlalchemy.Table(
     sqlalchemy.Column("dish_name", sqlalchemy.String(length=30), nullable=False),
     sqlalchemy.Column("ingredients", sqlalchemy.String(length=150), nullable=False),
     sqlalchemy.Column("quantity", sqlalchemy.Float, nullable=False),
+    sqlalchemy.Column("created_timestamp", sqlalchemy.String(length=30), nullable=False),
 )
 
 users = sqlalchemy.Table(

@@ -6,6 +6,7 @@ if DEBUG:
 
 import json
 import os
+from datetime import datetime
 from typing import List
 
 import httpx
@@ -41,10 +42,6 @@ async def root():
         'message': 'connected',
     }
 
-@app.get('/mass-wasted/{user_id}', response_model=int)
-async def get_mass_wasted(user_id: int):
-    return 23
-
 @app.get('/create-tables/{admin_password}')
 async def create_all_tables(admin_password: str):
     if admin_password == os.getenv('ADMIN_PASSWORD'):
@@ -64,6 +61,7 @@ async def create_all_tables(admin_password: str):
         return JSONResponse(content={
             'message': 'password is incorrect'
         }, status_code=403)
+
 
 @app.post('/devices', response_model=DeviceOut)
 async def add_device(device: DeviceIn) -> dict:
@@ -88,6 +86,7 @@ async def add_dish(dish_body: DishRequestBody) -> dict:
         dish_name=str(dish_body.dish_name),
         ingredients=list(dish_body.ingredients),
         quantity=float(dish_body.quantity),
+        created_timestamp=str(datetime.now()),
     )
     last_record_id = await insert_one_dish(dish_input)
     return {**dish_input.dict(), 'id': last_record_id}

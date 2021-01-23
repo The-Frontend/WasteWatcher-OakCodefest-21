@@ -6,6 +6,7 @@ class Dish {
     this.dishName,
     this.ingredients,
     this.quantity,
+    this.createdTimestamp,
   });
 
   int id;
@@ -14,6 +15,7 @@ class Dish {
   String dishName;
   List<String> ingredients;
   double quantity;
+  DateTime createdTimestamp;
 
   factory Dish.fromMap(Map<String, dynamic> json) => Dish(
         id: json["id"],
@@ -22,6 +24,7 @@ class Dish {
         dishName: json["dish_name"],
         ingredients: List<String>.from(json["ingredients"].map((x) => x)),
         quantity: json["quantity"],
+        createdTimestamp: DateTime.parse(json["created_timestamp"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -31,5 +34,6 @@ class Dish {
         "dish_name": dishName,
         "ingredients": List<dynamic>.from(ingredients.map((x) => x)),
         "quantity": quantity,
+        "created_timestamp": createdTimestamp.toIso8601String(),
       };
 }

@@ -6,7 +6,6 @@ final edamamApiResponseFutureProvider =
     FutureProvider.family<EdamamApiResponse, String>(
   (ProviderReference ref, String query) async {
     final apiService = ref.read(apiServiceProvider);
-    print('getting edamam api results again');
     final edamamApiResponse = await apiService.searchEdamamDishes(
       query: query,
     );

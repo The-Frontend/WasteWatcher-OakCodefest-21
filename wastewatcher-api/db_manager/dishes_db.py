@@ -33,7 +33,8 @@ async def get_dishes_by_user_id(user_id: int) -> List[DishOut]:
             device_id=int(row[2]),
             dish_name=str(row[3]),
             ingredients=str(row[4]).split(';'),
-            quantity=float(row[5])
+            quantity=float(row[5]),
+            created_timestamp=str(row[6]),
         )
         mapped_dishes.append(mapped_dish)
     return mapped_dishes

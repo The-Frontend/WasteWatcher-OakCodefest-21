@@ -27,7 +27,7 @@ class DishDialog extends ConsumerWidget {
           return Center(
             child: ListView.builder(
               itemCount:
-                  edamamApiResponse.hits[0].recipe.ingredients.length + 1,
+                  edamamApiResponse.hits[0].recipe.ingredientLines.length + 1,
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Column(
@@ -62,8 +62,7 @@ class DishDialog extends ConsumerWidget {
                   );
                 } else {
                   return Text(
-                    edamamApiResponse
-                        .hits[0].recipe.ingredients[index - 1].text,
+                    edamamApiResponse.hits[0].recipe.ingredientLines[index - 1],
                   );
                 }
               },

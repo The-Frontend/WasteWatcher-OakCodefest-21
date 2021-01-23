@@ -7,6 +7,7 @@ class DishIn(BaseModel):
     dish_name: str
     ingredients: List[str]
     quantity: float
+    created_timestamp: str
 
 class DishOut(BaseModel):
     id: int
@@ -15,6 +16,7 @@ class DishOut(BaseModel):
     dish_name: str
     ingredients: List[str]
     quantity: float
+    created_timestamp: str
 
 class DishRequestBody(BaseModel):
     device_id: int
