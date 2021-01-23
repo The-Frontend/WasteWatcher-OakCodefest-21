@@ -1,21 +1,24 @@
 from dotenv import load_dotenv
+
 DEBUG = True
 if DEBUG:
     load_dotenv()
 
-from starlette.responses import JSONResponse
-from db_manager.users_db import create_users_table
-from db_manager.dishes_db import create_dishes_table, get_dishes_by_user_id, insert_one_dish
-from db_manager.devices_db import create_devices_table, get_device_by_id, insert_one_device
-from models.device import DeviceIn, DeviceOut
-from typing import List
-import os
-import httpx
 import json
+import os
+from typing import List
 
+import httpx
 from fastapi import FastAPI
+from starlette.responses import JSONResponse
 
 from db_manager.db_connector import db
+from db_manager.devices_db import (create_devices_table, get_device_by_id,
+                                   insert_one_device)
+from db_manager.dishes_db import (create_dishes_table, get_dishes_by_user_id,
+                                  insert_one_dish)
+from db_manager.users_db import create_users_table
+from models.device import DeviceIn, DeviceOut
 from models.dish import DishIn, DishOut, DishRequestBody
 
 EDAMAM_APPLICATION_ID = os.getenv('EDAMAM_APPLICATION_ID')
