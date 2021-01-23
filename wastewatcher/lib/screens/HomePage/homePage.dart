@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/all.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:wastewatcher/constants/colors.dart';
 import 'package:wastewatcher/constants/routes.dart' as _routes;
-import 'package:wastewatcher/shared/dishesProvider.dart';
+import 'package:wastewatcher/shared/dishesFutureProvider.dart';
 import 'package:wastewatcher/utilities.dart';
 
 class HomePage extends ConsumerWidget {
