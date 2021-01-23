@@ -1,3 +1,4 @@
+from models.edamam_api_response import EdamamAPIResponsefromdict
 from dotenv import load_dotenv
 DEBUG = True
 if DEBUG:
@@ -10,11 +11,15 @@ from db_manager.devices_db import create_devices_table, get_device_by_id, insert
 from models.device import DeviceIn, DeviceOut
 from typing import List
 import os
+import httpx
 
 from fastapi import FastAPI
 
 from db_manager.db_connector import db
 from models.dish import DishIn, DishOut, DishRequestBody
+
+EDAMAM_APPLICATION_ID = os.getenv('EDAMAM_APPLICATION_ID')
+EDAMAM_APPLICATION_KEY = os.getenv('EDAMAM_APPLICATION_KEY')
 
 app = FastAPI()
 
@@ -84,3 +89,17 @@ async def add_dish(dish_body: DishRequestBody) -> dict:
     )
     last_record_id = await insert_one_dish(dish_input)
     return {**dish_input.dict(), 'id': last_record_id}
+
+
+@app.get('/dish-search')
+async def search_dish(query: str = ''):
+    if query == '':
+        return JSONResponse(status_code=400, content={
+            'message': "the 'query' query parameter should be provided to this route"
+        })
+    edamam_api_url = f'https://api.edamam.com/search?q=chicken&app_id={EDAMAM_APPLICATION_ID}&app_key={EDAMAM_APPLICATION_KEY}'
+    
+    edamam_api_response = None
+    async with httpx.AsyncClient() as client:
+        edamam_api_response = await client.get(edamam_api_url)
+    return edamam_api_response.json()
