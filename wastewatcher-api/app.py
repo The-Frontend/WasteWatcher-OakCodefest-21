@@ -85,7 +85,7 @@ async def add_dish(dish_body: DishRequestBody) -> dict:
     dish_input = DishIn(
         user_id=int(device.user_id),
         device_id=int(dish_body.device_id),
-        name=str(dish_body.name),
+        dish_name=str(dish_body.dish_name),
         ingredients=list(dish_body.ingredients),
         quantity=float(dish_body.quantity),
     )
