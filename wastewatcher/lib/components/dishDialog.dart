@@ -26,8 +26,7 @@ class DishDialog extends ConsumerWidget {
         data: (EdamamApiResponse edamamApiResponse) {
           return Center(
             child: ListView.builder(
-              itemCount:
-                  edamamApiResponse.hits[0].recipe.ingredientLines.length + 1,
+              itemCount: dish.ingredients.length + 1,
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Column(
@@ -40,6 +39,9 @@ class DishDialog extends ConsumerWidget {
                             24.0,
                           ),
                           child: FadeInImage.memoryNetwork(
+                            fadeInDuration: Duration(
+                              milliseconds: 200,
+                            ),
                             placeholder: transparent_image.kTransparentImage,
                             image: edamamApiResponse.hits[0].recipe.image,
                           ),
@@ -62,8 +64,11 @@ class DishDialog extends ConsumerWidget {
                   );
                 } else {
                   return Text(
-                    edamamApiResponse.hits[0].recipe.ingredientLines[index - 1],
+                    '$index. ${dish.ingredients[index - 1]}',
                   );
+                  // return Text(
+                  //   '$index. ${edamamApiResponse.hits[0].recipe.ingredientLines[index - 1]}',
+                  // );
                 }
               },
             ),

@@ -35,16 +35,18 @@ class DishListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Wasted Dishes',
-        ),
-        backgroundColor: appBarColor,
-      ),
-      body: watch(dishesFutureProvider).when<Widget>(
-        data: (dishes) {
-          return RefreshIndicator(
+    return watch(dishesFutureProvider).when<Widget>(
+      data: (dishes) {
+        return Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                'images/appBackground.png',
+              ),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: RefreshIndicator(
             child: Center(
               child: ListView.builder(
                 itemCount: dishes.length,
@@ -83,17 +85,17 @@ class DishListScreen extends ConsumerWidget {
               ),
             ),
             onRefresh: () => _refreshDishes(context),
-          );
-        },
-        loading: () => Center(
-          child: CircularProgressIndicator(),
-        ),
-        error: (error, stackTrace) {
-          return Text(
-            error.toString(),
-          );
-        },
+          ),
+        );
+      },
+      loading: () => Center(
+        child: CircularProgressIndicator(),
       ),
+      error: (error, stackTrace) {
+        return Text(
+          error.toString(),
+        );
+      },
     );
   }
 }
