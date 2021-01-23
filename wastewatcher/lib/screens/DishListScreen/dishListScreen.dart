@@ -55,7 +55,7 @@ class DishListScreen extends ConsumerWidget {
                         dish: dishes[index],
                       ),
                       title: Text(
-                        dishes[index].name,
+                        dishes[index].dishName,
                       ),
                     ),
                   );
