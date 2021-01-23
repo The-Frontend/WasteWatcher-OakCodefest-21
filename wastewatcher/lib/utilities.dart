@@ -10,7 +10,7 @@ Map<String, double> getIngredientsMapFromDishes(@required List<Dish> dishes) {
       if (ingredientsMap.keys.contains(ingredient)) {
         ingredientsMap[ingredient] += dish.quantity;
       } else {
-        ingredientsMap[ingredient] = dish.quantity;
+        ingredientsMap[ingredient] = dish.quantity.toDouble();
       }
     }
   }

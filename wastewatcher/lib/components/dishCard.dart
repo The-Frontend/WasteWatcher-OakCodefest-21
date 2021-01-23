@@ -20,7 +20,7 @@ class DishCard extends ConsumerWidget {
       ),
       content: watch(
         edamamApiResponseFutureProvider(
-          dish.name,
+          dish.dishName,
         ),
       ).when(
         data: (EdamamApiResponse edamamApiResponse) {
@@ -47,7 +47,7 @@ class DishCard extends ConsumerWidget {
                       height: 10.0,
                     ),
                     Text(
-                      dish.name,
+                      dish.dishName,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 27.0,

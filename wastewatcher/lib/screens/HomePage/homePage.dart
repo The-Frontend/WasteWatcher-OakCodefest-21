@@ -26,8 +26,6 @@ class HomePage extends ConsumerWidget {
       ),
       body: watch(dishesFutureProvider).when<Widget>(
         data: (dishes) {
-          Map<String, double> pieChartIngredientsDataMap =
-              getIngredientsMapFromDishes(dishes);
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -107,6 +105,8 @@ class HomePage extends ConsumerWidget {
           child: CircularProgressIndicator(),
         ),
         error: (error, stackTrace) {
+          print(error);
+          print(stackTrace);
           return Center(
             child: Text(
               'Something went wrong...',

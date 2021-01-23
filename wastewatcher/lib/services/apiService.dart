@@ -10,7 +10,7 @@ final apiServiceProvider = Provider<APIService>((ref) {
 });
 
 class APIService {
-  static const API_BASE_URL = 'https://312b16c6e903.ngrok.io';
+  static const API_BASE_URL = 'https://wastewatcher-api.herokuapp.com';
 
   Future<EdamamApiResponse> searchEdamamDishes({@required String query}) async {
     final response = await http.get(
@@ -23,24 +23,17 @@ class APIService {
     );
   }
 
-  Future<List<Dish>> getDishes() async {
-    await Future.delayed(
-      Duration(
-        seconds: 1,
-      ),
+  Future<List<Dish>> getDishes({@required int userId}) async {
+    final response = await http.get(
+      '$API_BASE_URL/dishes/$userId',
     );
-    var dishesJson = [
-      {
-        "name": "chocolate cake",
-        "ingredients": ["cocoa", "bread"],
-        "quantity": 5.0,
-      },
-      {
-        "name": "pizza",
-        "ingredients": ["cheese", "bread"],
-        "quantity": 3.0,
-      },
-    ];
-    return dishesJson.map((dishJson) => Dish.fromMap(dishJson)).toList();
+    final dishesJson = List<Map<String, dynamic>>.from(
+      json.decode(response.body),
+    );
+    return dishesJson
+        .map(
+          (dishJson) => Dish.fromMap(dishJson),
+        )
+        .toList();
   }
 }
