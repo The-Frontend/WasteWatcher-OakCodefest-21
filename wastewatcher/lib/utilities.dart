@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:wastewatcher/models/dish.dart';
+import 'package:intl/intl.dart';
 
 Map<String, double> getIngredientsMapFromDishes(@required List<Dish> dishes) {
   Map<String, double> ingredientsMap = {};
@@ -15,4 +16,8 @@ Map<String, double> getIngredientsMapFromDishes(@required List<Dish> dishes) {
     }
   }
   return ingredientsMap;
+}
+
+String dateTimeToString(DateTime dateTime) {
+  return DateFormat('yyyy/MM/dd').format(dateTime);
 }

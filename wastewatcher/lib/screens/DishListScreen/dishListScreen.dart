@@ -4,6 +4,7 @@ import 'package:wastewatcher/components/dishDialog.dart';
 import 'package:wastewatcher/constants/colors.dart';
 import 'package:wastewatcher/models/dish.dart';
 import 'package:wastewatcher/shared/dishesFutureProvider.dart';
+import 'package:wastewatcher/utilities.dart';
 
 final selectedDishStateProvider = StateProvider.autoDispose<Dish>((ref) {
   ref.maintainState = true;
@@ -54,8 +55,27 @@ class DishListScreen extends ConsumerWidget {
                         context,
                         dish: dishes[index],
                       ),
-                      title: Text(
-                        dishes[index].dishName,
+                      trailing: IconButton(
+                        onPressed: () => _handleDishTileTap(
+                          context,
+                          dish: dishes[index],
+                        ),
+                        icon: Icon(
+                          Icons.more_horiz,
+                        ),
+                      ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(
+                            dateTimeToString(
+                              dishes[index].createdTimestamp,
+                            ),
+                          ),
+                          Text(
+                            dishes[index].dishName,
+                          ),
+                        ],
                       ),
                     ),
                   );
