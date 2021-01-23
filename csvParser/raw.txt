@@ -1,0 +1,31 @@
+Apple Pie;apple,lemon,flour,vanilla,nut,cinnamon,brown sugar,sugar,dough,egg,milk
+Tacos;oil,soft corn tortillas,salt,pepper,oil,onion,garlic,jalapeno chilies,chili,beef,tomato
+breakfast Burrito;flour,potato,salt,pepper,onion,sage,egg,beans,cheddar,salsa
+Caesar Salad;salad,chicken,spray,salad,tomato,cheese
+Carrot Cake;carrot,apple,sugar,oil,egg,vanilla,flour,baking,cinnamon,nut,cheese,butter,vanilla,sugar,pecan
+Chicken Curry;cinnamon,clove,cardamom,black pepper,bay leaf,oil,onion,garlic,gin,chicken,cumin,coriander,turmeric,salt,plain yogurt,coconut,water,jalapeno chilies,cilantro,peas
+Chocolate Cake;butter,brown sugar,sugar,egg,butter,vanilla,flour,cocoa,baking,baking,salt
+Ice Cream;milk,corn starch,milk,sugar,corn syrup,cocoa,chocolate,salt,vanilla
+Churros;water,sugar,salt,oil,flour,cinnamon,butter
+club Sandwich;bread,bacon,turkey,ham,cheddar,lettuce,mayonnaise,tomato
+Cup cakes;sugar,beans,cake,baking,baking,salt,butter,egg,greek yogurt,vanilla,milk,sugar,milk
+Donuts;milk,sugar,yeast,egg,butter,flour,salt,shortening,sugar,vanilla,cold water
+Dumplings;gyoza,oil,water,pork,cabbage,gin,garlic,corn starch,soup,sake,pepper,oil,scallions,salt,ponzu
+Falafel;garlic,chickpea,parsley,cilantro,onion,flour,lemon,baking,salt,cumin,black pepper,grapes,lettuce,bread,tzatziki,hummus,tomato
+French Fries;oil,cajun,paprika,salt,black pepper,garlic,oregano,potato,water,cold water,sugar
+Waffles;flour,sugar,salt,baking,egg,milk,oil
+Sushi;rice,sugar,salt,mayonnaise,sriracha,soy,crab,cucumber,carrot,nori,gari,avocado,seeds
+Steak;steak,oil,salt,pepper
+Samosa;flour,salt,butter,water,oil,onion,garlic,pepper,gin,turmeric,chili,lamb,garam masala,lemon
+Prime_rib;standing rib roast,salt,mustard,rosemary,black pepper
+Pizza;pizza,bacon,brussels sprouts,balsamic vinegar,garlic,pepper,oil,onion,fontina,cheese
+Pancakes;ricotta,sugar,almond,chips,cannoli,egg,flour,baking,salt,baking,milk,egg
+Pad thai;garlic,thai chile,palm sugar,tamari,fish,lime,noodles,oil,shrimp,pepper,egg,tofu,carrot,beans,onion,cilantro,nut,lime
+Omelette;egg,milk,flour,butter,salt,pepper
+Nachos;oil,onion,beef,chili,paprika,cumin,pepper,salt,pepper,beans,water,chips,cheddar,monterey jack,tomato,jalapeno chilies,cilantro,lime,avocado
+Macaroni and cheese;macaroni,flour,salt,pepper,margarine,cheddar,milk
+Hot dog;dogs,dog bun,mustard,ketchup
+Hamburger;oil,beef,black pepper,salt,buns,tomato,pickle,iceberg,onion
+Grilled salmon;honey,soy,brown sugar,apple,lemon,vinegar,oil,black pepper,cayenne pepper,paprika,garlic,salmon
+Fried rice;rice,carrot,onion,cloves,peas,corn,soy,oil,egg,salt
+French toast;chicken,egg,bread,paprika,salt,black pepper
