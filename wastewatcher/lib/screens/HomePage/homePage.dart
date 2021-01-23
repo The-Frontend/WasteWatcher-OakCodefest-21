@@ -26,23 +26,62 @@ class HomePage extends ConsumerWidget {
       ),
       body: watch(dishesFutureProvider).when<Widget>(
         data: (dishes) {
+          Map<String, double> pieChartIngredientsDataMap =
+              getIngredientsMapFromDishes(dishes);
           return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(
-                'X Kgs Wasted',
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 20.0,
+              Center(
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      '5.3',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 40.0,
+                      ),
+                    ),
+                    Text(
+                      'kilograms wasted',
+                      style: TextStyle(
+                        fontSize: 24.0,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+              // fl_chart.PieChart(
+              //   fl_chart.PieChartData(
+              //     sections: pieChartIngredientsDataMap.keys.map(
+              //       (ingredientName) {
+              //         final percentage =
+              //             100 * pieChartIngredientsDataMap[ingredientName];
+              //         return fl_chart.PieChartSectionData(
+              //           title: '$percentage%',
+              //           value: percentage,
+              //         );
+              //       },
+              //     ).toList(),
+              //     pieTouchData: fl_chart.PieTouchData(
+              //       touchCallback: (fl_chart.PieTouchResponse touchResponse) {
+              //         print('touched');
+              //       },
+              //     ),
+              //   ),
+              // ),
               PieChart(
+                colorList: <Color>[
+                  Colors.green[300],
+                  Colors.green[600],
+                  Colors.green[900],
+                ],
                 chartRadius: screenSize.width / 1.8,
                 dataMap: getIngredientsMapFromDishes(dishes),
                 chartLegendSpacing: screenSize.width / 36,
                 legendOptions: LegendOptions(
-                  legendPosition: LegendPosition.top,
+                  legendPosition: LegendPosition.bottom,
+                  showLegends: true,
                 ),
                 chartValuesOptions: ChartValuesOptions(
                   showChartValuesInPercentage: true,

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/all.dart';
 import 'package:flutter/material.dart';
-import 'package:wastewatcher/components/dishContainer.dart';
+import 'package:wastewatcher/components/dishCard.dart';
 import 'package:wastewatcher/constants/colors.dart';
 import 'package:wastewatcher/models/dish.dart';
 import 'package:wastewatcher/shared/dishesFutureProvider.dart';
@@ -17,11 +17,23 @@ class DishListScreen extends ConsumerWidget {
 
   void _handleDishTileTap(BuildContext context, {@required Dish dish}) {
     context.read(selectedDishStateProvider).state = dish;
+    _showDishCardDialog(context);
+  }
+
+  void _showDishCardDialog(BuildContext context) {
+    final selectedDish = context.read(selectedDishStateProvider).state;
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DishCard(
+          dish: selectedDish,
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final selectedDish = watch(selectedDishStateProvider).state;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -34,27 +46,16 @@ class DishListScreen extends ConsumerWidget {
           return RefreshIndicator(
             child: Center(
               child: ListView.builder(
-                itemCount: dishes.length + 1,
+                itemCount: dishes.length,
                 itemBuilder: (context, index) {
-                  if (index == 0) {
-                    if (selectedDish != null) {
-                      return Center(
-                        child: DishContainer(
-                          dish: selectedDish,
-                        ),
-                      );
-                    } else {
-                      return Container();
-                    }
-                  }
                   return Card(
                     child: ListTile(
                       onTap: () => _handleDishTileTap(
                         context,
-                        dish: dishes[index - 1],
+                        dish: dishes[index],
                       ),
                       title: Text(
-                        dishes[index - 1].name,
+                        dishes[index].name,
                       ),
                     ),
                   );

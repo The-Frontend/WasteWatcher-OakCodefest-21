@@ -24,7 +24,4 @@ async def get_user_by_id(user_id: int) -> UserOut:
       name=str(row[1])
   )
   return user_out
-    
 
-async def get_devices_by_user_id(user_id: int):
-    pass

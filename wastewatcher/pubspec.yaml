@@ -26,6 +26,7 @@ dependencies:
   flutter_riverpod: ^0.12.2
   http: ^0.12.2
   pie_chart: ^4.0.1
+  transparent_image: ^1.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

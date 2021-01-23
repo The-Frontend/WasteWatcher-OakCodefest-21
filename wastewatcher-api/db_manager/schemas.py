@@ -18,6 +18,7 @@ users = sqlalchemy.Table(
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, nullable=False),
     sqlalchemy.Column("name", sqlalchemy.String(length=30), nullable=False),
+    sqlalchemy.Column("mass_wasted", sqlalchemy.Integer, nullable=False),
 )
 
 devices = sqlalchemy.Table(

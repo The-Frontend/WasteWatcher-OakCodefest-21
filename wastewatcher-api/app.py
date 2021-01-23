@@ -1,4 +1,3 @@
-from models.edamam_api_response import EdamamAPIResponsefromdict
 from dotenv import load_dotenv
 DEBUG = True
 if DEBUG:
@@ -12,6 +11,7 @@ from models.device import DeviceIn, DeviceOut
 from typing import List
 import os
 import httpx
+import json
 
 from fastapi import FastAPI
 
@@ -38,6 +38,10 @@ async def root():
         'message': 'connected',
     }
 
+@app.get('/mass-wasted/{user_id}', response_model=int)
+async def get_mass_wasted(user_id: int):
+    return 23
+
 @app.get('/create-tables/{admin_password}')
 async def create_all_tables(admin_password: str):
     if admin_password == os.getenv('ADMIN_PASSWORD'):
@@ -63,14 +67,9 @@ async def add_device(device: DeviceIn) -> dict:
     last_record_id = int(await insert_one_device(device))
     return {**device.dict(), 'id': last_record_id}
 
-@app.get('/dishes/{device_id}', response_model=List[DishOut])
-async def get_dishes(device_id: int):
-    device = await get_device_by_id(device_id)
-    if device == None:
-        return {
-            'message': 'device not found'
-        }
-    dishes = await get_dishes_by_user_id(device.user_id)
+@app.get('/dishes/{user_id}', response_model=List[DishOut])
+async def get_dishes(user_id: int):
+    dishes = await get_dishes_by_user_id(user_id)
     return dishes
 
 @app.post('/dishes', response_model=DishOut)
@@ -97,9 +96,13 @@ async def search_dish(query: str = ''):
         return JSONResponse(status_code=400, content={
             'message': "the 'query' query parameter should be provided to this route"
         })
-    edamam_api_url = f'https://api.edamam.com/search?q=chicken&app_id={EDAMAM_APPLICATION_ID}&app_key={EDAMAM_APPLICATION_KEY}'
+    # edamam_api_url = f'https://api.edamam.com/search?q={query}&app_id={EDAMAM_APPLICATION_ID}&app_key={EDAMAM_APPLICATION_KEY}'
     
-    edamam_api_response = None
-    async with httpx.AsyncClient() as client:
-        edamam_api_response = await client.get(edamam_api_url)
-    return edamam_api_response.json()
+    # edamam_api_response = None
+    # async with httpx.AsyncClient() as client:
+    #     edamam_api_response = await client.get(edamam_api_url)
+    # return edamam_api_response.json()
+    edamam_chicken_response = None
+    with open('./edamam_chicken_response.json', mode='r') as file:
+        edamam_chicken_response = json.load(file)
+    return edamam_chicken_response
