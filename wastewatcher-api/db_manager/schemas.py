@@ -8,7 +8,7 @@ dishes = sqlalchemy.Table(
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, nullable=False),
     sqlalchemy.Column("user_id", sqlalchemy.Integer, nullable=False),
     sqlalchemy.Column("device_id", sqlalchemy.Integer, nullable=False),
-    sqlalchemy.Column("name", sqlalchemy.String(length=30), nullable=False),
+    sqlalchemy.Column("dish_name", sqlalchemy.String(length=30), nullable=False),
     sqlalchemy.Column("ingredients", sqlalchemy.String(length=150), nullable=False),
     sqlalchemy.Column("quantity", sqlalchemy.Float, nullable=False),
 )
