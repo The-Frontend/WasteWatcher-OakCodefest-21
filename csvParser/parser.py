@@ -1,6 +1,6 @@
 import csv
 
-file = open("dump2.txt")
+file = open("raw.txt")
 
 ingredients_set = set()
 items_set = set()
